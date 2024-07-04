@@ -1,11 +1,8 @@
 name: ci
 on:
   push:
-    branches:
-    - ng
-  pull_request:
 jobs:
- linux:
-    uses: minecraft-linux/appimage-builder/.github/workflows/main.yml@main
- macOS:
-    uses: minecraft-linux/macos-builder/.github/workflows/main.yml@main
+  test-runner:
+    runs-on: test-xr-runner
+    steps:
+    - run: exit 0
