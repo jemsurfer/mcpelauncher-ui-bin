@@ -22,3 +22,6 @@
 [submodule "mcpelauncher-common"]
 	path = mcpelauncher-common
 	url = ../mcpelauncher-common.git
+[submodule "qtkeychain"]
+	path = qtkeychain
+	url = https://github.com/frankosterfeld/qtkeychain

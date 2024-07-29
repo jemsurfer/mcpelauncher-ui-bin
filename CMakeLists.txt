@@ -29,6 +29,7 @@ add_subdirectory(mcpelauncher-common)
 add_subdirectory(mcpelauncher-extract)
 add_subdirectory(google-play-api)
 add_subdirectory(playdl-signin-ui-qt)
+add_subdirectory(qtkeychain)
 add_subdirectory(mcpelauncher-ui-qt)
 
 if (ENABLE_APPIMAGE_UPDATE_CHECK)
