@@ -31,6 +31,7 @@ add_subdirectory(google-play-api)
 add_subdirectory(playdl-signin-ui-qt)
 set(BUILD_TRANSLATIONS OFF)
 set(BUILD_SHARED_LIBS OFF)
+set(BUILD_TESTING OFF)
 add_subdirectory(qtkeychain)
 add_subdirectory(mcpelauncher-ui-qt)
 
