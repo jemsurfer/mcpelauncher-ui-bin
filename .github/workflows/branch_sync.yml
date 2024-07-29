@@ -1,6 +1,16 @@
 name: branch sync
 on:
   workflow_dispatch:
+    inputs:
+      qt5:
+        type: string
+        default: ng
+      qt6:
+        type: string
+        default: qt6
+      skip_update:
+        type: boolean
+        default: false
   schedule:
   - cron:  '30 1 * * *'
 jobs:
@@ -10,15 +20,16 @@ jobs:
     steps:
     - uses: actions/checkout@v3
       with:
-        ref: ng
+        ref: ${{ inputs.qt5 || 'ng' }}
         path: mcpelauncher-ng
         submodules: true
     - uses: actions/checkout@v3
       with:
-        ref: qt6
+        ref: ${{ inputs.qt6 || 'qt6' }}
         path: mcpelauncher-qt6
         submodules: true
     - name: Update branches
+      if: (!inputs.skip_update)
       run: |
         set -x
         dirs=( "mcpelauncher-ng" "mcpelauncher-qt6" )
@@ -49,9 +60,9 @@ jobs:
         done
       shell: bash
     outputs:
-      mcpelauncher-ng: ${{ env.mcpelauncher-ng }}
-      mcpelauncher-qt6: ${{ env.mcpelauncher-qt6 }}
-      sync: ${{ env.mcpelauncher-ng && env.mcpelauncher-qt6 && 'true' || 'false' }}
+      mcpelauncher-ng: ${{ env.mcpelauncher-ng || inputs.qt5 }}
+      mcpelauncher-qt6: ${{ env.mcpelauncher-qt6 || inputs.qt6 }}
+      sync: ${{ (env.mcpelauncher-ng || inputs.qt5) && (env.mcpelauncher-qt6 || inputs.qt6) && 'true' || 'false' }}
   linux-AppImage:
     if: needs.prepare.outputs.sync == 'true'
     needs: prepare
