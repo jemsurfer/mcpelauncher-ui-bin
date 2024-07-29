@@ -32,7 +32,6 @@ add_subdirectory(playdl-signin-ui-qt)
 set(BUILD_TRANSLATIONS OFF)
 set(BUILD_SHARED_LIBS OFF)
 set(BUILD_TESTING OFF)
-set(LIBSECRET_SUPPORT OFF)
 add_subdirectory(qtkeychain)
 add_subdirectory(mcpelauncher-ui-qt)
 
